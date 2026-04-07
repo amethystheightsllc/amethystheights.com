@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amethyst Heights | Vista, California</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --walnut:     #7a5c3e;
+      --walnut-dk:  #4e3a27;
+      --sand:       #f5f0e8;
+      --linen:      #faf8f4;
+      --sage:       #8a9e87;
+      --sage-lt:    #c8d6c5;
+      --warm-white: #fffef9;
+      --charcoal:   #2d2926;
+      --stone:      #6b6058;
+      --cream-mid:  #ede8df;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--linen);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 48px;
+      background: rgba(250,248,244,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(122,92,62,0.1);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--walnut-dk);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo span { font-style: italic; color: var(--walnut); }
+
+    .nav-cta {
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--warm-white);
+      background: var(--walnut);
+      padding: 10px 28px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--walnut-dk); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 70px;
+    }
+
+    .hero-left {
+      background: var(--sand);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 72px;
+      position: relative;
+    }
+
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      right: -1px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--walnut), transparent);
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: heroIn 0.8s ease 0.1s both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--sage);
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 5vw, 72px);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--walnut-dk);
+      margin-bottom: 28px;
+      animation: heroIn 0.8s ease 0.25s both;
+    }
+
+    .hero-title em { font-style: italic; color: var(--walnut); display: block; }
+
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--stone);
+      max-width: 380px;
+      margin-bottom: 44px;
+      animation: heroIn 0.8s ease 0.4s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      animation: heroIn 0.8s ease 0.55s both;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--walnut);
+      color: var(--warm-white);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--walnut-dk); transform: translateY(-2px); }
+
+    .btn-text {
+      font-size: 13px;
+      color: var(--stone);
+      text-decoration: none;
+      border-bottom: 1px solid var(--cream-mid);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-text:hover { color: var(--walnut); border-color: var(--walnut); }
+
+    /* Hero right mosaic */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream-mid);
+      animation: heroIn 1s ease 0.3s both;
+    }
+
+    .hero-mosaic {
+      display: grid;
+      grid-template-rows: 60% 40%;
+      height: 100%;
+    }
+
+    .mosaic-top {
+      background: linear-gradient(145deg, #d4c4ae, #bfaf99);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+
+    .mosaic-bottom { display: grid; grid-template-columns: 1fr 1fr; }
+
+    .mosaic-bottom-left {
+      background: linear-gradient(145deg, #c8d6c5, #b5c4b1);
+      display: flex; align-items: center; justify-content: center;
+      border-top: 3px solid var(--linen);
+      border-right: 1.5px solid var(--linen);
+    }
+
+    .mosaic-bottom-right {
+      background: linear-gradient(145deg, #c9b99a, #b8a585);
+      display: flex; align-items: center; justify-content: center;
+      border-top: 3px solid var(--linen);
+      border-left: 1.5px solid var(--linen);
+    }
+
+    .mosaic-top img,
+    .mosaic-bottom-left img,
+    .mosaic-bottom-right img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute; inset: 0;
+      transition: transform 0.6s ease;
+    }
+
+    .photo-hint {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 12px;
+    }
+
+    /* STRIP */
+    .intro-strip {
+      background: var(--walnut);
+      padding: 32px 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .intro-stat { display: flex; flex-direction: column; gap: 4px; }
+
+    .intro-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--warm-white);
+    }
+
+    .intro-stat-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .intro-div { width: 1px; height: 36px; background: rgba(255,255,255,0.15); }
+
+    /* UNITS */
+    .units { padding: 120px 72px; max-width: 1300px; margin: 0 auto; }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--sage); }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 400;
+      color: var(--walnut-dk);
+      line-height: 1.15;
+    }
+
+    .section-title em { font-style: italic; color: var(--walnut); }
+
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--cream-mid);
+    }
+
+    .unit-card {
+      background: var(--linen);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .unit-card:hover {
+      transform: translateY(-5px);
+      z-index: 2;
+      box-shadow: 0 20px 48px rgba(78,58,39,0.13);
+    }
+
+    .unit-photo {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: linear-gradient(145deg, #d4c4ae, #bfaf99);
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .unit-card:nth-child(2) .unit-photo { background: linear-gradient(145deg, #c8d6c5, #b0c2ac); }
+    .unit-card:nth-child(3) .unit-photo { background: linear-gradient(145deg, #c9b99a, #b8a585); }
+
+    .unit-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute; inset: 0;
+      transition: transform 0.6s ease;
+    }
+
+    .unit-card:hover .unit-photo img { transform: scale(1.04); }
+
+    .unit-body { padding: 28px 32px 36px; display: flex; flex-direction: column; flex: 1; }
+
+    .unit-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--walnut-dk);
+      margin-bottom: 10px;
+    }
+
+    .unit-name em { font-style: italic; color: var(--walnut); }
+
+    .unit-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--stone);
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .unit-features {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px;
+    }
+
+    .unit-feature {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      display: flex; align-items: center; gap: 5px;
+    }
+
+    .unit-feature::before {
+      content: '';
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--sage-lt);
+    }
+
+    .unit-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--walnut);
+      text-decoration: none;
+      border-bottom: 1px solid var(--cream-mid);
+      padding-bottom: 2px;
+      align-self: flex-start;
+      transition: border-color 0.2s, gap 0.2s;
+    }
+
+    .unit-link:hover { border-color: var(--walnut); gap: 12px; }
+
+    /* WHY DIRECT */
+    .why { background: var(--sand); padding: 100px 72px; }
+
+    .why-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-visual { position: relative; height: 460px; }
+
+    .why-photo-main {
+      position: absolute;
+      top: 0; left: 0;
+      width: 75%; height: 82%;
+      background: linear-gradient(145deg, #c9b99a, #b8a585);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    .why-photo-main img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+
+    .why-photo-accent {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 55%; height: 48%;
+      background: linear-gradient(145deg, #c8d6c5, #b0c2ac);
+      border: 4px solid var(--linen);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    .why-photo-accent img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+
+    .why-perks { list-style: none; margin-top: 40px; display: flex; flex-direction: column; gap: 28px; }
+
+    .perk { display: flex; gap: 20px; align-items: flex-start; }
+
+    .perk-icon {
+      width: 40px; height: 40px;
+      background: var(--walnut);
+      color: var(--warm-white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .perk-text h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 400;
+      color: var(--walnut-dk);
+      margin-bottom: 4px;
+    }
+
+    .perk-text p { font-size: 13px; line-height: 1.7; color: var(--stone); }
+
+    /* LOCATION */
+    .location { padding: 100px 72px; max-width: 1000px; margin: 0 auto; text-align: center; }
+
+    .location-desc {
+      font-size: 15px; line-height: 1.85; color: var(--stone);
+      max-width: 560px; margin: 24px auto 0;
+    }
+
+    .location-tags {
+      display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 40px;
+    }
+
+    .location-tag {
+      padding: 10px 20px;
+      border: 1px solid var(--cream-mid);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone);
+      background: var(--warm-white);
+    }
+
+    /* FOOTER CTA */
+    .footer-cta {
+      background: var(--walnut-dk);
+      padding: 100px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px,
+        transparent 1px, transparent 20px
+      );
+    }
+
+    .footer-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .footer-cta h2 em { font-style: italic; color: var(--sage-lt); }
+
+    .footer-cta p {
+      font-size: 14px; color: rgba(255,255,255,0.5);
+      margin-bottom: 44px; letter-spacing: 0.04em; position: relative;
+    }
+
+    .footer-cta a {
+      display: inline-block;
+      padding: 18px 56px;
+      background: var(--warm-white);
+      color: var(--walnut-dk);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .footer-cta a:hover { background: var(--sand); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      padding: 28px 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px; color: rgba(255,255,255,0.45);
+    }
+
+    .footer-logo span { font-style: italic; }
+
+    .footer-links { display: flex; gap: 24px; }
+
+    .footer-links a {
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.65); }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+    .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.15s; }
+    .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.3s; }
+
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 100px 28px 60px; }
+      .hero-left::after { display: none; }
+      .hero-right { height: 60vw; min-height: 280px; }
+      .intro-strip { padding: 28px 24px; }
+      .intro-div { display: none; }
+      .units { padding: 80px 24px; }
+      .units-grid { grid-template-columns: 1fr; }
+      .why { padding: 80px 24px; }
+      .why-inner { grid-template-columns: 1fr; gap: 40px; }
+      .why-visual { height: 280px; }
+      .location { padding: 80px 24px; }
+      .footer-cta { padding: 80px 24px; }
+      footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Amethyst <span>Heights</span></div>
+    <a class="nav-cta" href="https://amethystheightsllc.byhospitable.com" target="_blank" rel="noopener">Book Direct</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-tag">Vista, California</p>
+      <h1 class="hero-title">
+        Where warmth<br/>
+        <em>meets the West.</em>
+      </h1>
+      <p class="hero-desc">Three thoughtfully designed retreats in Vista, CA — each one a sanctuary of natural materials, warm wood, and California light. No platform fees. Just a better stay.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://amethystheightsllc.byhospitable.com" target="_blank" rel="noopener">Book Direct &rarr;</a>
+        <a class="btn-text" href="#units">Explore Units</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-mosaic">
+        <div class="mosaic-top">
+          <!-- ADD: <img src="hero-main.jpg" alt="Amethyst Heights living room"> -->
+          <p class="photo-hint">Your hero photo here</p>
+        </div>
+        <div class="mosaic-bottom">
+          <div class="mosaic-bottom-left">
+            <!-- ADD: <img src="hero-2.jpg" alt=""> -->
+            <p class="photo-hint">Photo 2</p>
+          </div>
+          <div class="mosaic-bottom-right">
+            <!-- ADD: <img src="hero-3.jpg" alt=""> -->
+            <p class="photo-hint">Photo 3</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="intro-strip">
+    <div class="intro-stat">
+      <span class="intro-stat-num">3</span>
+      <span class="intro-stat-label">Unique Retreats</span>
+    </div>
+    <div class="intro-div"></div>
+    <div class="intro-stat">
+      <span class="intro-stat-num">Vista, CA</span>
+      <span class="intro-stat-label">North San Diego County</span>
+    </div>
+    <div class="intro-div"></div>
+    <div class="intro-stat">
+      <span class="intro-stat-num">0%</span>
+      <span class="intro-stat-label">Platform Fees — Book Direct</span>
+    </div>
+    <div class="intro-div"></div>
+    <div class="intro-stat">
+      <span class="intro-stat-num">Instant</span>
+      <span class="intro-stat-label">Confirmation</span>
+    </div>
+  </div>
+
+  <!-- UNITS -->
+  <section class="units" id="units">
+    <div class="section-header reveal">
+      <div>
+        <p class="section-tag">Our Properties</p>
+        <h2 class="section-title">Three retreats,<br/><em>one vision.</em></h2>
+      </div>
+      <a class="btn-primary" href="https://amethystheightsllc.byhospitable.com" target="_blank" rel="noopener">View All &rarr;</a>
+    </div>
+
+    <div class="units-grid reveal-stagger">
+
+      <div class="unit-card">
+        <div class="unit-photo">
+          <!-- ADD: <img src="haven.jpg" alt="The Haven at Amethyst Heights"> -->
+          <p class="photo-hint">Haven — add photo</p>
+        </div>
+        <div class="unit-body">
+          <h3 class="unit-name">The <em>Haven</em></h3>
+          <p class="unit-desc">A warm sanctuary built for connection. Rich walnut finishes, sun-drenched living spaces, and that unmistakable feeling of being exactly where you're meant to be.</p>
+          <div class="unit-features">
+            <span class="unit-feature">Full Kitchen</span>
+            <span class="unit-feature">Private Space</span>
+            <span class="unit-feature">Fast WiFi</span>
+          </div>
+          <a class="unit-link" href="https://amethystheightsllc.byhospitable.com" target="_blank" rel="noopener">Book Haven &rarr;</a>
+        </div>
+      </div>
+
+      <div class="unit-card">
+        <div class="unit-photo">
+          <!-- ADD: <img src="hearth.jpg" alt="The Hearth at Amethyst Heights"> -->
+          <p class="photo-hint">Hearth — add photo</p>
+        </div>
+        <div class="unit-body">
+          <h3 class="unit-name">The <em>Hearth</em></h3>
+          <p class="unit-desc">Cozy by design, generous in spirit. Soft linens, natural textures, and a living space that invites you to slow down — whether you're here for a weekend or a week.</p>
+          <div class="unit-features">
+            <span class="unit-feature">Full Kitchen</span>
+            <span class="unit-feature">Private Space</span>
+            <span class="unit-feature">Fast WiFi</span>
+          </div>
+          <a class="unit-link" href="https://amethystheightsllc.byhospitable.com" target="_blank" rel="noopener">Book Hearth &rarr;</a>
+        </div>
+      </div>
+
+      <div class="unit-card">
+        <div class="unit-photo">
+          <!-- ADD: <img src="oasis.jpg" alt="The Oasis at Amethyst Heights"> -->
+          <p class="photo-hint">Oasis — add photo</p>
+        </div>
+        <div class="unit-body">
+          <h3 class="unit-name">The <em>Oasis</em></h3>
+          <p class="unit-desc">Light, airy, and serene — Oasis is your California exhale. White walls, open air, sage green accents, and every comfort you need to truly unwind.</p>
+          <div class="unit-features">
+            <span class="unit-feature">Full Kitchen</span>
+            <span class="unit-feature">Private Space</span>
+            <span class="unit-feature">Fast WiFi</span>
+          </div>
+          <a class="unit-link" href="https://amethystheightsllc.byhospitable.com" target="_blank" rel="noopener">Book Oasis &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY BOOK DIRECT -->
+  <section class="why">
+    <div class="why-inner">
+      <div class="why-visual reveal">
+        <div class="why-photo-main">
+          <!-- ADD: <img src="interior-1.jpg" alt=""> -->
+          <p class="photo-hint">Interior photo</p>
+        </div>
+        <div class="why-photo-accent">
+          <!-- ADD: <img src="interior-2.jpg" alt=""> -->
+          <p class="photo-hint">Detail photo</p>
+        </div>
+      </div>
+      <div class="why-content reveal">
+        <p class="section-tag">Why Book Direct</p>
+        <h2 class="section-title">Better for you.<br/><em>Better for us.</em></h2>
+        <ul class="why-perks">
+          <li class="perk">
+            <div class="perk-icon">✦</div>
+            <div class="perk-text">
+              <h4>No Platform Fees</h4>
+              <p>Skip the Airbnb and VRBO service charges. The rate you see is the rate you pay.</p>
+            </div>
+          </li>
+          <li class="perk">
+            <div class="perk-icon">✦</div>
+            <div class="perk-text">
+              <h4>Direct Communication</h4>
+              <p>Reach us directly — no middleman, no delays, no automated runarounds.</p>
+            </div>
+          </li>
+          <li class="perk">
+            <div class="perk-icon">✦</div>
+            <div class="perk-text">
+              <h4>Instant Confirmation</h4>
+              <p>Your booking is confirmed the moment you complete it. No waiting, no uncertainty.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="location reveal">
+    <p class="section-tag" style="justify-content:center; margin-bottom:12px;">Where We Are</p>
+    <h2 class="section-title">Vista, <em>California</em></h2>
+    <p class="location-desc">Nestled in North San Diego County, Vista offers the best of Southern California — warm weather, rolling hills, and easy access to beaches, wine country, and the city. The perfect home base for exploring it all.</p>
+    <div class="location-tags">
+      <span class="location-tag">20 min to Carlsbad Beach</span>
+      <span class="location-tag">30 min to San Diego</span>
+      <span class="location-tag">Near Temecula Wine Country</span>
+      <span class="location-tag">Year-Round Sunshine</span>
+      <span class="location-tag">LEGOLAND Nearby</span>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="footer-cta">
+    <h2>Your California<br/><em>retreat awaits.</em></h2>
+    <p>Book directly and save. No fees. Just a beautiful stay in Vista, CA.</p>
+    <a href="https://amethystheightsllc.byhospitable.com" target="_blank" rel="noopener">Book Direct Now</a>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Amethyst <span>Heights</span> LLC &nbsp;·&nbsp; Vista, California</div>
+    <div class="footer-links">
+      <a href="mailto:ops@amethystheights.com">Contact</a>
+      <a href="https://amethystheightsllc.byhospitable.com" target="_blank" rel="noopener">Book Direct</a>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
