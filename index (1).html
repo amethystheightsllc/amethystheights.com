@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amethyst Heights | Vista, California</title>
+  <style>
+    :root {
+      --bg: #f7f3fb;
+      --bg-soft: #efe8f7;
+      --bg-warm: #e6dcef;
+      --card: #fcf9ff;
+      --text: #40364e;
+      --muted: #756886;
+      --accent: #8e6bb3;
+      --accent-dark: #5f4778;
+      --accent-soft: #d9caea;
+      --border: #ddd2e9;
+      --footer: #5a466f;
+      --footer-dark: #433451;
+      --shadow: 0 16px 40px rgba(72, 50, 99, 0.10);
+      --radius: 22px;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(250, 246, 253, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: clamp(2rem, 2.3vw, 2.9rem);
+      letter-spacing: 0.01em;
+      color: var(--accent-dark);
+    }
+
+    .brand em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn,
+    .tab-btn {
+      border: 0;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 16px 30px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: var(--accent-dark);
+      background: transparent;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      font-size: 0.98rem;
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      border-color: var(--accent-dark);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 34px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .hero-copy {
+      padding: 66px 60px;
+      background: linear-gradient(180deg, #fbf7ff 0%, #f0e8f8 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.08;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.9rem, 5vw, 5.2rem);
+      margin-bottom: 20px;
+      color: var(--accent-dark);
+    }
+
+    .hero h1 em,
+    .section-title em,
+    .cta-title em,
+    .location-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero p {
+      margin: 0 0 32px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 34rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .hero-image {
+      min-height: 560px;
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* VALUE STRIP */
+    .value-strip {
+      margin: 28px auto 0;
+      width: min(var(--max), calc(100% - 40px));
+      background: var(--accent);
+      color: #fff;
+      border-radius: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .value-item {
+      padding: 26px 24px;
+      border-right: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .value-item:last-child { border-right: 0; }
+    .value-number {
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+    }
+    .value-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.8;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 0; }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 34px;
+    }
+
+    .section-title {
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      color: var(--accent-dark);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 52rem;
+      margin: 14px 0 0;
+      font-size: 1.03rem;
+    }
+
+    /* STAY CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery {
+      position: relative;
+      background: #eadff3;
+    }
+
+    .gallery-track {
+      display: flex;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-slide {
+      min-width: 100%;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-slide img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .gallery-nav {
+      position: absolute;
+      inset: 50% 12px auto 12px;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .gallery-btn {
+      pointer-events: auto;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(255,255,255,0.92);
+      color: var(--accent-dark);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .gallery-count {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      background: rgba(64, 54, 78, 0.76);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    .card-body {
+      padding: 26px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      flex: 1;
+    }
+
+    .card h3 {
+      font-size: 2rem;
+      color: var(--accent-dark);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .card .btn-primary {
+      align-self: start;
+      margin-top: auto;
+      padding: 14px 22px;
+      font-size: 0.8rem;
+    }
+
+    .coming-soon {
+      display: grid;
+      place-items: center;
+      min-height: 280px;
+      background: linear-gradient(135deg, #dccdea 0%, #c8b2df 100%);
+      color: var(--accent-dark);
+      text-align: center;
+      padding: 30px;
+    }
+
+    .coming-soon strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    /* COMBINED */
+    .combined-section {
+      padding-top: 10px;
+    }
+
+    .combined-wrap {
+      background: linear-gradient(180deg, #f3ebfa 0%, #e8dcf2 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .combined-wrap h3 {
+      font-size: 1.6rem;
+      color: var(--accent-dark);
+      margin-bottom: 10px;
+    }
+
+    .combined-wrap p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 58rem;
+    }
+
+
+    /* REVIEWS */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .review-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    .review-name {
+      font-size: 1.15rem;
+      color: var(--accent-dark);
+      margin-bottom: 4px;
+    }
+
+    .review-meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .review-stars {
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .review-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+
+    /* MINUTES FROM */
+    .minutes-section {
+      padding-top: 24px;
+    }
+
+    .minutes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .minute-card {
+      background: linear-gradient(180deg, #f6f0f8 0%, #efe4f3 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .minute-number {
+      font-size: 2rem;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .minute-label {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    /* WHY */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+      min-height: 520px;
+      background: #d8c9e8;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .why-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .why-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+
+    .why-list {
+      display: grid;
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .why-item h4 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: var(--accent-dark);
+    }
+
+    .why-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* LOCATION */
+    .location {
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .location-inner {
+      text-align: center;
+    }
+
+    .location-title {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      color: var(--accent-dark);
+    }
+
+    .location-copy {
+      max-width: 50rem;
+      margin: 18px auto 28px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .location-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* BOOKING */
+    .booking-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .booking-head {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .booking-head h2 {
+      font-size: clamp(2.3rem, 3.5vw, 3.5rem);
+      color: var(--accent-dark);
+    }
+
+    .booking-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .tab-btn {
+      padding: 14px 18px;
+      background: #f3eef9;
+      color: var(--accent-dark);
+      border: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .booking-frame {
+      display: none;
+    }
+
+    .booking-frame.active {
+      display: block;
+    }
+
+    .booking-frame iframe {
+      width: 100%;
+      height: 900px;
+      border: 0;
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    /* CTA + FOOTER */
+    .final-cta {
+      padding-top: 40px;
+    }
+
+    .cta-box {
+      background: var(--footer);
+      color: #fff;
+      text-align: center;
+      padding: 58px 24px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .cta-title {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      max-width: 42rem;
+      margin: 0 auto 24px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    footer {
+      background: var(--footer-dark);
+      color: rgba(255,255,255,0.84);
+      padding: 14px 26px;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.86rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: #fff;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(27, 20, 14, 0.82);
+      z-index: 100;
+      padding: 30px;
+    }
+
+    .lightbox.open { display: grid; }
+
+    .lightbox-inner {
+      max-width: min(1100px, 100%);
+      max-height: 92vh;
+      position: relative;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 86vh;
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -16px;
+      right: -8px;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--accent-dark);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .why-grid,
+      .combined-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .value-strip,
+      .reviews-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-image { min-height: 420px; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner { min-height: 80px; }
+      .btn-primary { padding: 14px 22px; }
+      .hero-copy { padding: 42px 28px; }
+      .hero-image { min-height: 320px; }
+      .cards,
+      .value-strip,
+      .reviews-grid { grid-template-columns: 1fr; }
+      section { padding: 72px 0; }
+      .why-panel,
+      .booking-panel,
+      .combined-wrap { padding: 26px 22px; }
+      .gallery-slide img,
+      .coming-soon { min-height: 240px; height: 240px; }
+      footer { padding: 14px 18px; }
+      .booking-frame iframe { height: 760px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="#top" class="brand">Amethyst <em>Heights</em></a>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="#booking">Check Availability</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Vista, California</div>
+            <h1>A warm, <em>elevated</em> escape in Vista, California.</h1>
+            <p>Boutique-style stays designed for rest, connection, and easy access to LEGOLAND, the beach, and North County’s best escapes.</p>
+            <div class="hero-buttons">
+              <a class="btn btn-primary" href="#booking">Check Availability</a>
+              <a class="btn btn-secondary" href="#stays">Compare Stays</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="images/hero-1.jpg" alt="Outdoor dining and patio scene at Amethyst Heights" />
+          </div>
+        </div>
+      </div>
+      <div class="value-strip">
+        <div class="value-item">
+          <div class="value-number">2</div>
+          <div class="value-label">Distinct Stays</div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">Vista</div>
+          <div class="value-label">North County San Diego</div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">Book Direct</div>
+          <div class="value-label">No Platform Middleman</div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">Easy</div>
+          <div class="value-label">Instant Confirmation</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stays">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Our Stays</div>
+            <h2 class="section-title">Two distinctive stays, <em>one elevated escape.</em></h2>
+            <p class="section-subtitle">Choose the stay that fits your trip best, whether you’re planning a cozy getaway or a relaxed trip with family and friends near LEGOLAND, the beach, and North County’s best spots.</p>
+          </div>
+          <a class="btn btn-primary" href="#booking">Book Now</a>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="gallery" data-gallery="haven">
+              <div class="gallery-track">
+                <div class="gallery-slide"><img src="images/haven-cover.jpg" alt="Spa-style soaking tub at Haven" /></div>
+                <div class="gallery-slide"><img src="images/haven-1.jpg" alt="Private hot tub and patio lounge at Haven" /></div>
+                <div class="gallery-slide"><img src="images/haven-2.jpg" alt="Outdoor dining and grill area at Haven" /></div>
+              </div>
+              <div class="gallery-nav">
+                <button class="gallery-btn prev" aria-label="Previous Haven photo">&#8249;</button>
+                <button class="gallery-btn next" aria-label="Next Haven photo">&#8250;</button>
+              </div>
+              <div class="gallery-count">1 / 3</div>
+            </div>
+            <div class="card-body">
+              <h3>Haven</h3>
+              <p>Haven is a cozy, private retreat designed for slower mornings, quiet evenings, and easy getaways near LEGOLAND and the beach. With a deep soaking tub, fire pit, BBQ, and inviting outdoor spaces, it’s a warm and peaceful place to unwind after a day out. Ideal for couples, creatives, and small families, Haven blends comfort, charm, and a touch of magic in a setting that feels both restful and special.</p>
+              <div class="tags">
+                <span class="tag">Soaking tub</span>
+                <span class="tag">Fire pit</span>
+                <span class="tag">BBQ</span>
+                <span class="tag">Private retreat</span>
+              </div>
+              <a class="btn btn-primary" href="#booking" data-book-target="haven">Book Haven</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="gallery" data-gallery="hearth">
+              <div class="gallery-track">
+                <div class="gallery-slide"><img src="images/hearth-cover.jpg" alt="Covered patio dining area with string lights at Hearth" /></div>
+                <div class="gallery-slide"><img src="images/hearth-1.jpg" alt="Warm living room with fireplace and space to gather together at Hearth" /></div>
+                <div class="gallery-slide"><img src="images/hearth-2.jpg" alt="Private hot tub and cozy outdoor lounge at Hearth" /></div>
+              </div>
+              <div class="gallery-nav">
+                <button class="gallery-btn prev" aria-label="Previous Hearth photo">&#8249;</button>
+                <button class="gallery-btn next" aria-label="Next Hearth photo">&#8250;</button>
+              </div>
+              <div class="gallery-count">1 / 3</div>
+            </div>
+            <div class="card-body">
+              <h3>Hearth</h3>
+              <p>Hearth is a spacious, inviting stay made for connection, comfort, and time well spent together. After a day at LEGOLAND, the beach, or exploring North County, come home to a private hot tub, cozy outdoor gathering spaces, king beds, and a bunk room that makes it especially easy for families and groups. Tucked into the peaceful hills yet close to local attractions, Hearth offers a relaxed, home-like feel with its own entrance and dedicated amenities.</p>
+              <div class="tags">
+                <span class="tag">Hot tub</span>
+                <span class="tag">Bunk room</span>
+                <span class="tag">King beds</span>
+                <span class="tag">Family-friendly</span>
+              </div>
+              <a class="btn btn-primary" href="#booking" data-book-target="hearth">Book Hearth</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="combined-section">
+      <div class="container">
+        <div class="combined-wrap">
+          <div>
+            <h3>Traveling with friends or family and looking for more space?</h3>
+            <p>Perfect for families and friends traveling together, this cozy and stylish stay offers plenty of space to relax, connect, and unwind. With comfortable sleeping arrangements, inviting outdoor areas, and a warm, welcoming feel, it’s an ideal home base near LEGOLAND and the beach.</p>
+          </div>
+          <a class="btn btn-primary" href="#booking" data-book-target="both">Book Both Stays</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Guest Reviews</div>
+            <h2 class="section-title">Loved by guests who value <em>comfort and connection.</em></h2>
+            <p class="section-subtitle">Real feedback from guests who enjoyed the privacy, warmth, and responsive hosting experience at Amethyst Heights.</p>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-head">
+              <div>
+                <div class="review-name">Rick</div>
+                <div class="review-meta">Noblesville, Indiana · March 2026 · Stayed with a pet</div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p>“We really enjoyed staying at Eric's place. We enjoyed using the hot tub and BBQ grill. The kitchen was great for cooking meals. Eric was great host and he was quick to respond to any questions or concerns we had.”</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-head">
+              <div>
+                <div class="review-name">Malena</div>
+                <div class="review-meta">Los Angeles, California · February 2026 · Group trip</div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p>“The home is beautiful and we liked the large, open common space. It’s in a beautiful location with so much fun stuff to do within a short drive. Thanks Eric for your friendly and quick communication!”</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-head">
+              <div>
+                <div class="review-name">Chealsea</div>
+                <div class="review-meta">San Diego, California · January 2026 · Group trip</div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p>“We had a wonderful stay at this Airbnb. The home was very private and quiet, which made it incredibly relaxing, and the hot tub was such a highlight. The space itself was very spacious, comfortable, and easy to access, which we really appreciated. The host was also fantastic—very responsive and quick to answer any questions we had. It ended up being the perfect place to host my birthday party, and I couldn’t have asked for a better experience. I would absolutely recommend this place and would love to stay again.”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="minutes-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Minutes From</div>
+            <h2 class="section-title">Close to the best of <em>North County</em></h2>
+            <p class="section-subtitle">An easy home base for theme park days, beach afternoons, local dining, and laid-back exploring across Vista and the coast.</p>
+          </div>
+        </div>
+        <div class="minutes-grid">
+          <div class="minute-card">
+            <div class="minute-number">15 min</div>
+            <div class="minute-label">to LEGOLAND California</div>
+          </div>
+          <div class="minute-card">
+            <div class="minute-number">20 min</div>
+            <div class="minute-label">to Carlsbad beaches</div>
+          </div>
+          <div class="minute-card">
+            <div class="minute-number">10 min</div>
+            <div class="minute-label">to Vista Village</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container why-grid">
+        <div class="why-visual">
+          <img src="images/why-1.jpg" alt="Interior at Amethyst Heights showing warm design details" />
+        </div>
+        <div class="why-panel">
+          <div class="eyebrow">Why Book Direct</div>
+          <h2 class="section-title">Better for you. <br /><em>Better for us.</em></h2>
+          <div class="why-list">
+            <div class="why-item">
+              <h4>Best available rate</h4>
+              <p>Book directly for the most straightforward pricing and avoid the extra platform middleman.</p>
+            </div>
+            <div class="why-item">
+              <h4>Flexible communication with the host</h4>
+              <p>Ask questions before booking and get quick, helpful answers before and during your stay.</p>
+            </div>
+            <div class="why-item">
+              <h4>Secure checkout</h4>
+              <p>Reserve with confidence through a direct, secure booking flow built for a smoother experience.</p>
+            </div>
+            <div class="why-item">
+              <h4>Direct support before and during your stay</h4>
+              <p>From trip planning to check-in details, you’ll have a direct line for faster support when you need it.</p>
+            </div>
+            <div class="why-item">
+              <h4>Easier repeat booking</h4>
+              <p>Love your stay? Booking again is simpler when you already know exactly where to return.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="location">
+      <div class="container location-inner">
+        <div class="eyebrow">Where We Are</div>
+        <h2 class="location-title">Vista, <em>California</em></h2>
+        <p class="location-copy">Nestled in North San Diego County, Vista offers warm weather, rolling hills, and easy access to beaches, wine country, family attractions, and day trips across the coast.</p>
+        <div class="location-tags">
+          <span class="tag">Near LEGOLAND</span>
+          <span class="tag">Close to the beach</span>
+          <span class="tag">North County basecamp</span>
+          <span class="tag">Wine country nearby</span>
+          <span class="tag">Easy SoCal exploring</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="container">
+        <div class="booking-panel">
+          <div class="booking-head">
+            <div class="eyebrow">Reserve your stay</div>
+            <h2>Book <em>Direct</em></h2>
+          </div>
+          <div class="booking-tabs">
+            <button class="tab-btn active" data-tab="both">Book Both Stays</button>
+            <button class="tab-btn" data-tab="haven">Haven Only</button>
+            <button class="tab-btn" data-tab="hearth">Hearth Only</button>
+          </div>
+
+          <div class="booking-frame active" data-frame="both">
+            <iframe id="booking-iframe-both" sandbox="allow-top-navigation allow-scripts allow-same-origin" src="https://booking.hospitable.com/widget/a17f06f8-f628-4fea-8afb-8511120a52df/2239742" title="Book both units"></iframe>
+          </div>
+          <div class="booking-frame" data-frame="haven">
+            <iframe id="booking-iframe-haven" sandbox="allow-top-navigation allow-scripts allow-same-origin" src="https://booking.hospitable.com/widget/a17f06f8-f628-4fea-8afb-8511120a52df/1689926" title="Book Haven"></iframe>
+          </div>
+          <div class="booking-frame" data-frame="hearth">
+            <iframe id="booking-iframe-hearth" sandbox="allow-top-navigation allow-scripts allow-same-origin" src="https://booking.hospitable.com/widget/a17f06f8-f628-4fea-8afb-8511120a52df/1241220" title="Book Hearth"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2 class="cta-title">Your California <br /><em>retreat awaits.</em></h2>
+          <p>Book directly and settle into a warm, elevated stay in Vista without the usual booking-platform runaround.</p>
+          <a class="btn btn-primary" href="#booking">Book Direct Now</a>
+        </div>
+        <footer>
+          <div>Amethyst Heights LLC &nbsp;&middot;&nbsp; Vista, California</div>
+          <div class="footer-links">
+            <a href="mailto:ops@amethystheights.com">Contact</a>
+            <a href="#booking">Book Direct</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" type="button" aria-label="Close image">&times;</button>
+      <img src="" alt="Expanded gallery image" id="lightbox-image" />
+    </div>
+  </div>
+
+  <script>
+    // Stay card galleries
+    document.querySelectorAll('.gallery').forEach((gallery) => {
+      const track = gallery.querySelector('.gallery-track');
+      const slides = Array.from(gallery.querySelectorAll('.gallery-slide'));
+      const prevBtn = gallery.querySelector('.prev');
+      const nextBtn = gallery.querySelector('.next');
+      const count = gallery.querySelector('.gallery-count');
+      let index = 0;
+
+      function updateGallery() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        count.textContent = `${index + 1} / ${slides.length}`;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        index = (index - 1 + slides.length) % slides.length;
+        updateGallery();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
+        updateGallery();
+      });
+
+      slides.forEach((slide) => {
+        slide.addEventListener('click', () => openLightbox(slide.querySelector('img').src));
+      });
+
+      updateGallery();
+    });
+
+    // Booking tabs
+    const bookingButtons = document.querySelectorAll('.tab-btn');
+    const bookingFrames = document.querySelectorAll('.booking-frame');
+
+    function showBookingTab(tab) {
+      bookingButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tab));
+      bookingFrames.forEach(frame => frame.classList.toggle('active', frame.dataset.frame === tab));
+    }
+
+    bookingButtons.forEach(btn => {
+      btn.addEventListener('click', () => showBookingTab(btn.dataset.tab));
+    });
+
+    document.querySelectorAll('[data-book-target]').forEach(link => {
+      link.addEventListener('click', () => {
+        const target = link.dataset.bookTarget;
+        showBookingTab(target);
+      });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    function openLightbox(src) {
+      lightboxImage.src = src;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+  </script>
+</body>
+</html>
