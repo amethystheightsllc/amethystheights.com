@@ -6,18 +6,19 @@
   <title>Amethyst Heights | Vista, California</title>
   <style>
     :root {
-      --bg: #f5f1eb;
-      --bg-soft: #efe8df;
-      --bg-warm: #e7ddd0;
-      --card: #fbf8f3;
-      --text: #4b3b2c;
-      --muted: #7a6a5a;
-      --accent: #8b6a45;
-      --accent-dark: #6f5335;
-      --border: #ddd2c4;
-      --footer: #6a4c33;
-      --footer-dark: #4e3827;
-      --shadow: 0 16px 40px rgba(79, 58, 38, 0.08);
+      --bg: #f7f3fb;
+      --bg-soft: #efe8f7;
+      --bg-warm: #e6dcef;
+      --card: #fcf9ff;
+      --text: #40364e;
+      --muted: #756886;
+      --accent: #8e6bb3;
+      --accent-dark: #5f4778;
+      --accent-soft: #d9caea;
+      --border: #ddd2e9;
+      --footer: #5a466f;
+      --footer-dark: #433451;
+      --shadow: 0 16px 40px rgba(72, 50, 99, 0.10);
       --radius: 22px;
       --max: 1240px;
     }
@@ -46,7 +47,7 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(247, 243, 238, 0.94);
+      background: rgba(250, 246, 253, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -131,7 +132,7 @@
 
     .hero-copy {
       padding: 66px 60px;
-      background: linear-gradient(180deg, #f9f5ef 0%, #f3ece3 100%);
+      background: linear-gradient(180deg, #fbf7ff 0%, #f0e8f8 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -246,7 +247,7 @@
     /* STAY CARDS */
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 26px;
     }
 
@@ -262,7 +263,7 @@
 
     .gallery {
       position: relative;
-      background: #e9dece;
+      background: #eadff3;
     }
 
     .gallery-track {
@@ -308,7 +309,7 @@
       position: absolute;
       right: 14px;
       bottom: 14px;
-      background: rgba(75,59,44,0.72);
+      background: rgba(64, 54, 78, 0.76);
       color: #fff;
       padding: 8px 12px;
       border-radius: 999px;
@@ -362,7 +363,7 @@
       display: grid;
       place-items: center;
       min-height: 280px;
-      background: linear-gradient(135deg, #ddcfba 0%, #ccb79c 100%);
+      background: linear-gradient(135deg, #dccdea 0%, #c8b2df 100%);
       color: var(--accent-dark);
       text-align: center;
       padding: 30px;
@@ -380,7 +381,7 @@
     }
 
     .combined-wrap {
-      background: linear-gradient(180deg, #f0e6db 0%, #e8ddd0 100%);
+      background: linear-gradient(180deg, #f3ebfa 0%, #e8dcf2 100%);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 30px 34px;
@@ -403,6 +404,85 @@
       max-width: 58rem;
     }
 
+
+    /* REVIEWS */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .review-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    .review-name {
+      font-size: 1.15rem;
+      color: var(--accent-dark);
+      margin-bottom: 4px;
+    }
+
+    .review-meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .review-stars {
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .review-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+
+    /* MINUTES FROM */
+    .minutes-section {
+      padding-top: 24px;
+    }
+
+    .minutes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .minute-card {
+      background: linear-gradient(180deg, #f6f0f8 0%, #efe4f3 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .minute-number {
+      font-size: 2rem;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .minute-label {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
     /* WHY */
     .why-grid {
       display: grid;
@@ -414,7 +494,7 @@
     .why-visual {
       position: relative;
       min-height: 520px;
-      background: #d7cab8;
+      background: #d8c9e8;
       border-radius: 22px;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -511,7 +591,7 @@
 
     .tab-btn {
       padding: 14px 18px;
-      background: #f2ece4;
+      background: #f3eef9;
       color: var(--accent-dark);
       border: 1px solid var(--border);
       text-transform: uppercase;
@@ -639,7 +719,8 @@
       }
 
       .cards,
-      .value-strip {
+      .value-strip,
+      .reviews-grid {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -652,7 +733,8 @@
       .hero-copy { padding: 42px 28px; }
       .hero-image { min-height: 320px; }
       .cards,
-      .value-strip { grid-template-columns: 1fr; }
+      .value-strip,
+      .reviews-grid { grid-template-columns: 1fr; }
       section { padding: 72px 0; }
       .why-panel,
       .booking-panel,
@@ -669,7 +751,7 @@
     <div class="nav-inner">
       <a href="#top" class="brand">Amethyst <em>Heights</em></a>
       <div class="nav-actions">
-        <a class="btn btn-primary" href="#booking">Book Direct</a>
+        <a class="btn btn-primary" href="#booking">Check Availability</a>
       </div>
     </div>
   </header>
@@ -683,8 +765,8 @@
             <h1>A warm, <em>elevated</em> escape in Vista, California.</h1>
             <p>Boutique-style stays designed for rest, connection, and easy access to LEGOLAND, the beach, and North County’s best escapes.</p>
             <div class="hero-buttons">
-              <a class="btn btn-primary" href="#booking">Book Direct</a>
-              <a class="btn btn-secondary" href="#stays">Explore stays</a>
+              <a class="btn btn-primary" href="#booking">Check Availability</a>
+              <a class="btn btn-secondary" href="#stays">Compare Stays</a>
             </div>
           </div>
           <div class="hero-image">
@@ -694,7 +776,7 @@
       </div>
       <div class="value-strip">
         <div class="value-item">
-          <div class="value-number">3</div>
+          <div class="value-number">2</div>
           <div class="value-label">Distinct Stays</div>
         </div>
         <div class="value-item">
@@ -717,8 +799,8 @@
         <div class="section-header">
           <div>
             <div class="eyebrow">Our Stays</div>
-            <h2 class="section-title">Three retreats, <em>one vision.</em></h2>
-            <p class="section-subtitle">Choose the stay that fits your trip best, from cozy private escapes to a larger setup for friends and family traveling together.</p>
+            <h2 class="section-title">Two distinctive stays, <em>one elevated escape.</em></h2>
+            <p class="section-subtitle">Choose the stay that fits your trip best, whether you’re planning a cozy getaway or a relaxed trip with family and friends near LEGOLAND, the beach, and North County’s best spots.</p>
           </div>
           <a class="btn btn-primary" href="#booking">Book Now</a>
         </div>
@@ -739,7 +821,7 @@
             </div>
             <div class="card-body">
               <h3>Haven</h3>
-              <p>Just minutes from LEGOLAND and the beach, this private retreat offers cozy comfort with a touch of magic: twinkle lights, fire pit, BBQ, and a deep soaking tub. A perfect spot to breathe, especially for couples, creatives, or small families seeking charm, calm, and a break from the ordinary.</p>
+              <p>Haven is a cozy, private retreat designed for slower mornings, quiet evenings, and easy getaways near LEGOLAND and the beach. With a deep soaking tub, fire pit, BBQ, and inviting outdoor spaces, it’s a warm and peaceful place to unwind after a day out. Ideal for couples, creatives, and small families, Haven blends comfort, charm, and a touch of magic in a setting that feels both restful and special.</p>
               <div class="tags">
                 <span class="tag">Soaking tub</span>
                 <span class="tag">Fire pit</span>
@@ -765,7 +847,7 @@
             </div>
             <div class="card-body">
               <h3>Hearth</h3>
-              <p>After a full day at LEGOLAND or the beach, Hearth is the place to kick back and recharge. Soak in the private hot tub while the kids giggle in the bunk room, light up the fire pit, serve dinner under string lights, and relax in king beds that feel like home. Just minutes from attractions but tucked into peaceful hills, this colorful retreat fits families, friends, and remote workers. Hearth is one of two private stays on the property, each with its own entrance and dedicated amenities.</p>
+              <p>Hearth is a spacious, inviting stay made for connection, comfort, and time well spent together. After a day at LEGOLAND, the beach, or exploring North County, come home to a private hot tub, cozy outdoor gathering spaces, king beds, and a bunk room that makes it especially easy for families and groups. Tucked into the peaceful hills yet close to local attractions, Hearth offers a relaxed, home-like feel with its own entrance and dedicated amenities.</p>
               <div class="tags">
                 <span class="tag">Hot tub</span>
                 <span class="tag">Bunk room</span>
@@ -773,25 +855,6 @@
                 <span class="tag">Family-friendly</span>
               </div>
               <a class="btn btn-primary" href="#booking" data-book-target="hearth">Book Hearth</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="coming-soon">
-              <div>
-                <strong>Oasis</strong>
-                <div>Coming Soon</div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h3>Oasis</h3>
-              <p>Welcome to your private rooftop spa-like oasis. Relax in the hot tub with a view, soak up the sun, or unwind by the fire pit under the stars. Perfectly located near LEGOLAND, the San Diego Zoo, Oceanside Pier, and Carlsbad beaches, this modern escape is designed for comfort and fun. A plush king bed, lightning-fast Wi-Fi, and a fully stocked kitchen make it easy to feel at home. A dream spot for couples, small families, and remote workers craving style and comfort.</p>
-              <div class="tags">
-                <span class="tag">Rooftop feel</span>
-                <span class="tag">Hot tub views</span>
-                <span class="tag">Fire pit</span>
-                <span class="tag">Coming soon</span>
-              </div>
             </div>
           </article>
         </div>
@@ -811,6 +874,80 @@
     </section>
 
     <section>
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Guest Reviews</div>
+            <h2 class="section-title">Loved by guests who value <em>comfort and connection.</em></h2>
+            <p class="section-subtitle">Real feedback from guests who enjoyed the privacy, warmth, and responsive hosting experience at Amethyst Heights.</p>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-head">
+              <div>
+                <div class="review-name">Rick</div>
+                <div class="review-meta">Noblesville, Indiana · March 2026 · Stayed with a pet</div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p>“We really enjoyed staying at Eric's place. We enjoyed using the hot tub and BBQ grill. The kitchen was great for cooking meals. Eric was great host and he was quick to respond to any questions or concerns we had.”</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-head">
+              <div>
+                <div class="review-name">Malena</div>
+                <div class="review-meta">Los Angeles, California · February 2026 · Group trip</div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p>“The home is beautiful and we liked the large, open common space. It’s in a beautiful location with so much fun stuff to do within a short drive. Thanks Eric for your friendly and quick communication!”</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-head">
+              <div>
+                <div class="review-name">Chealsea</div>
+                <div class="review-meta">San Diego, California · January 2026 · Group trip</div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p>“We had a wonderful stay at this Airbnb. The home was very private and quiet, which made it incredibly relaxing, and the hot tub was such a highlight. The space itself was very spacious, comfortable, and easy to access, which we really appreciated. The host was also fantastic—very responsive and quick to answer any questions we had. It ended up being the perfect place to host my birthday party, and I couldn’t have asked for a better experience. I would absolutely recommend this place and would love to stay again.”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="minutes-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Minutes From</div>
+            <h2 class="section-title">Close to the best of <em>North County</em></h2>
+            <p class="section-subtitle">An easy home base for theme park days, beach afternoons, local dining, and laid-back exploring across Vista and the coast.</p>
+          </div>
+        </div>
+        <div class="minutes-grid">
+          <div class="minute-card">
+            <div class="minute-number">15 min</div>
+            <div class="minute-label">to LEGOLAND California</div>
+          </div>
+          <div class="minute-card">
+            <div class="minute-number">20 min</div>
+            <div class="minute-label">to Carlsbad beaches</div>
+          </div>
+          <div class="minute-card">
+            <div class="minute-number">10 min</div>
+            <div class="minute-label">to Vista Village</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <div class="container why-grid">
         <div class="why-visual">
           <img src="images/why-1.jpg" alt="Interior at Amethyst Heights showing warm design details" />
@@ -820,16 +957,24 @@
           <h2 class="section-title">Better for you. <br /><em>Better for us.</em></h2>
           <div class="why-list">
             <div class="why-item">
-              <h4>No platform fees</h4>
-              <p>Skip the extra Airbnb and VRBO service charges and book directly with the host.</p>
+              <h4>Best available rate</h4>
+              <p>Book directly for the most straightforward pricing and avoid the extra platform middleman.</p>
             </div>
             <div class="why-item">
-              <h4>Direct communication</h4>
-              <p>Get faster answers before and during your stay without the middleman.</p>
+              <h4>Flexible communication with the host</h4>
+              <p>Ask questions before booking and get quick, helpful answers before and during your stay.</p>
             </div>
             <div class="why-item">
-              <h4>Instant confirmation</h4>
-              <p>Your reservation is confirmed as soon as you complete your booking.</p>
+              <h4>Secure checkout</h4>
+              <p>Reserve with confidence through a direct, secure booking flow built for a smoother experience.</p>
+            </div>
+            <div class="why-item">
+              <h4>Direct support before and during your stay</h4>
+              <p>From trip planning to check-in details, you’ll have a direct line for faster support when you need it.</p>
+            </div>
+            <div class="why-item">
+              <h4>Easier repeat booking</h4>
+              <p>Love your stay? Booking again is simpler when you already know exactly where to return.</p>
             </div>
           </div>
         </div>
@@ -859,7 +1004,7 @@
             <h2>Book <em>Direct</em></h2>
           </div>
           <div class="booking-tabs">
-            <button class="tab-btn active" data-tab="both">Book Both Units</button>
+            <button class="tab-btn active" data-tab="both">Book Both Stays</button>
             <button class="tab-btn" data-tab="haven">Haven Only</button>
             <button class="tab-btn" data-tab="hearth">Hearth Only</button>
           </div>
